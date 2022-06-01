@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ReadAndWrite implements Serializable {
+public class ReadAndWrite {
     public void writeToFile (List<Product> products)  {
         try {
-            FileOutputStream file = new FileOutputStream("D:\\00. Codegym\\02. Module 2\\17. IO Binary File and Serialization\\IO_Binary_File_and_Serialization\\src\\ProDuctManager\\ProductList.csv");
+            FileOutputStream file = new FileOutputStream("ProductList.csv");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(file);
-            objectOutputStream.writeObject(products.toString());
+            objectOutputStream.writeObject(products);
             objectOutputStream.close();
             file.close();
         } catch (Exception e) {
@@ -21,17 +21,17 @@ public class ReadAndWrite implements Serializable {
     }
 
     public List<Product> readDataFromFile(){
-        List<Product> products1 = new LinkedList<>();
+       List<Product> products = new LinkedList<>();
         try {
-            FileInputStream fis = new FileInputStream("D:\\00. Codegym\\02. Module 2\\17. IO Binary File and Serialization\\IO_Binary_File_and_Serialization\\src\\ProDuctManager\\ProductList.csv");
+            FileInputStream fis = new FileInputStream("ProductList.csv");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            products1 = (List<Product>) ois.readObject();
+            products = (LinkedList<Product>) ois.readObject();
             ois.close();
             fis.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return products1;
+        return products;
     }
 
 

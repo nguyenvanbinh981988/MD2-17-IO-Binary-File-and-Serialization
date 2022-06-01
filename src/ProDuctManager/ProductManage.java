@@ -9,6 +9,7 @@ public class ProductManage {
     List<Product> products = new LinkedList<>();
     ReadAndWrite readAndWrite = new ReadAndWrite();
 
+    {products = readAndWrite.readDataFromFile();}
 
 
     public void menu(){
@@ -53,7 +54,6 @@ public class ProductManage {
 
         Product product = new Product(Id,name,maker,Price);
 
-        products = readAndWrite.readDataFromFile();
 
         products.add(product);
 
@@ -70,15 +70,10 @@ public class ProductManage {
     public void findProduct(){
         System.out.println("Enter FindName");
         String name = input.nextLine();
-
-        products = readAndWrite.readDataFromFile();
-
         for (int i = 0; i < products.size(); i++) {
             if (name.equals(products.get(i).getProductName())){
                 System.out.println(products.get(i).toString());
             }
         }
     }
-
-
 }
